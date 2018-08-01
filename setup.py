@@ -1,19 +1,22 @@
-# encoding: utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 #
-# setup.py
+# @Author: José Sánchez-Gallego (gallegoj@uw.edu)
+# @Date: 2018-07-31
+# @Filename: setup.py
+# @License: BSD 3-clause (http://www.opensource.org/licenses/BSD-3-Clause)
 #
+# @Last modified by: José Sánchez-Gallego (gallegoj@uw.edu)
+# @Last modified time: 2018-07-31 17:21:11
 
 
-from __future__ import division
-from __future__ import print_function
-from __future__ import absolute_import
-from __future__ import unicode_literals
+from __future__ import absolute_import, division, print_function, unicode_literals
 
-from setuptools import setup, find_packages
-
-import os
 import argparse
+import os
 import sys
+
+from setuptools import find_packages, setup
 
 
 # The NAME variable should be of the format "sdss-seiya".
@@ -33,11 +36,11 @@ def run(packages, install_requires):
           author='José Sánchez-Galle',
           author_email='gallegoj@uw.edu',
           keywords='astronomy software',
-          url='https://github.com/sdss/seiya',
+          url='https://github.com/albireox/seiya',
           include_package_data=True,
           packages=packages,
           install_requires=install_requires,
-          package_dir={'': 'python'},
+          package_dir={'': ''},
           scripts=['bin/seiya'],
           classifiers=[
               'Development Status :: 4 - Beta',
@@ -49,9 +52,8 @@ def run(packages, install_requires):
               'Programming Language :: Python :: 2.6',
               'Programming Language :: Python :: 2.7',
               'Topic :: Documentation :: Sphinx',
-              'Topic :: Software Development :: Libraries :: Python Modules',
-          ],
-          )
+              'Topic :: Software Development :: Libraries :: Python Modules'
+          ])
 
 
 def get_requirements(opts):
@@ -102,7 +104,7 @@ if __name__ == '__main__':
     remove_args(parser)
 
     # Have distutils find the packages
-    packages = find_packages(where='python')
+    packages = find_packages(where='')
 
     # Runs distutils
     run(packages, install_requires)
