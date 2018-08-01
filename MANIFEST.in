@@ -1,1 +1,1 @@
-recursive-include python/seiya/etc *
+recursive-include seiya/etc *
