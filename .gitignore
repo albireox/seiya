@@ -101,3 +101,6 @@ ENV/
 # mypy
 .mypy_cache/
 
+# Cython inplace outputs
+seiya/**/*.c
+seiya/**/*.html

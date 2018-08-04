@@ -7,7 +7,7 @@
 # @License: BSD 3-clause (http://www.opensource.org/licenses/BSD-3-Clause)
 #
 # @Last modified by: José Sánchez-Gallego (gallegoj@uw.edu)
-# @Last modified time: 2018-07-31 17:21:11
+# @Last modified time: 2018-08-03 16:41:09
 
 
 from __future__ import absolute_import, division, print_function, unicode_literals
@@ -16,7 +16,10 @@ import argparse
 import os
 import sys
 
+import numpy
+from Cython.Build import cythonize
 from setuptools import find_packages, setup
+from setuptools.extension import Extension
 
 
 # The NAME variable should be of the format "sdss-seiya".
@@ -26,21 +29,26 @@ VERSION = '0.1.0dev'
 RELEASE = 'dev' in VERSION
 
 
+extensions = [
+    Extension('seiya.cube.cubify', ['seiya/cube/cubify.pyx'], include_dirs=[numpy.get_include()])
+]
+
+
 def run(packages, install_requires):
 
     setup(name=NAME,
           version=VERSION,
           license='BSD3',
-          description='Description of your project.',
+          description='Cube reconstruction and stacking tools for MaNGA data',
           long_description=open('README.rst').read(),
-          author='José Sánchez-Galle',
+          author='José Sánchez-Gallego',
           author_email='gallegoj@uw.edu',
           keywords='astronomy software',
           url='https://github.com/albireox/seiya',
           include_package_data=True,
           packages=packages,
           install_requires=install_requires,
-          package_dir={'': ''},
+          ext_modules=cythonize(extensions, annotate=True),
           scripts=['bin/seiya'],
           classifiers=[
               'Development Status :: 4 - Beta',
@@ -49,15 +57,14 @@ def run(packages, install_requires):
               'Natural Language :: English',
               'Operating System :: OS Independent',
               'Programming Language :: Python',
-              'Programming Language :: Python :: 2.6',
-              'Programming Language :: Python :: 2.7',
+              'Programming Language :: Python :: 3.6',
               'Topic :: Documentation :: Sphinx',
               'Topic :: Software Development :: Libraries :: Python Modules'
           ])
 
 
 def get_requirements(opts):
-    ''' Get the proper requirements file based on the optional argument '''
+    """Get the proper requirements file based on the optional argument"""
 
     if opts.dev:
         name = 'requirements_dev.txt'
@@ -69,11 +76,12 @@ def get_requirements(opts):
     requirements_file = os.path.join(os.path.dirname(__file__), name)
     install_requires = [line.strip().replace('==', '>=') for line in open(requirements_file)
                         if not line.strip().startswith('#') and line.strip() != '']
+
     return install_requires
 
 
 def remove_args(parser):
-    ''' Remove custom arguments from the parser '''
+    """Remove custom arguments from the parser"""
 
     arguments = []
     for action in list(parser._get_optional_actions()):
@@ -104,7 +112,7 @@ if __name__ == '__main__':
     remove_args(parser)
 
     # Have distutils find the packages
-    packages = find_packages(where='')
+    packages = find_packages()
 
     # Runs distutils
     run(packages, install_requires)
