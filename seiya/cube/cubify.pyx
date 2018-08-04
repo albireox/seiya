@@ -15,10 +15,10 @@ def cubify(DTYPE_t [:, :] flux, DTYPE_t [:, :] ivar, DTYPE_t [:, :] xpos, DTYPE_
     r"""Reconstructs a datacube from RSS arrays using the Shepard's algorithm.
 
     This function follows the approach to cube reconstruction used by MaNGA
-    (see Law et al. 2016). In short, it applies a Shepard's algorithm in which
-    the matrix of weights follows a Gaussian kernel but sets an upper limit to
-    the contribution of a fibre to a point in the grid (``rlimit``).
-    Mathematically,
+    (see `Law et al. 2016 <http://bit.ly/2M2TmsM>`__). In short, it applies a
+    Shepard's algorithm in which the matrix of weights follows a Gaussian
+    kernel but sets an upper limit to the contribution of a fibre to a point in
+    the grid (``rlimit``). Mathematically,
 
     .. math::
 

@@ -39,7 +39,7 @@ from seiya import __version__
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'sphinx.ext.autosummary',
               'sphinx.ext.todo', 'sphinx.ext.viewcode', 'sphinx.ext.mathjax',
-              'sphinx.ext.intersphinx']
+              'sphinx.ext.intersphinx', 'releases']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -120,6 +120,9 @@ autodoc_member_order = 'groupwise'
 
 napoleon_use_rtype = False
 napoleon_use_ivar = True
+
+releases_github_path = 'albireox/seiya'
+releases_document_name = 'CHANGELOG.rst'
 
 rst_epilog = """
 .. |numpy_array| replace:: Numpy array

@@ -15,8 +15,11 @@ Introduction
 
 A description of the package can go here.
 
-* :ref:`What's new in seiya? <changelog>`
-* :ref:`Introduction to seiya <intro>`
+.. toctree::
+  :maxdepth: 1
+
+    What's new in seiya? <CHANGELOG>
+    Introduction to seiya <intro>
 
 Reference
 ---------

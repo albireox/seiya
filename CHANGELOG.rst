@@ -6,27 +6,6 @@ Change Log
 
 This document records the main changes to the seiya code.
 
-.. _changelog-0.1.0:
-0.1.0 (unreleased)
-------------------
-
-Added
-^^^^^
-* A thing we added.
-
-.. x.y.z (unreleased)
-.. ------------------
-..
-.. A short description
-..
-.. Added
-.. ^^^^^
-.. * TBD
-..
-.. Changed
-.. ^^^^^^^
-.. * TBD
-..
-.. Fixed
-.. ^^^^^
-.. * TBD
+- :release:`0.1.0 <unreleased>`
+- :feature:`-` Implement `~seiya.cube.cubify` and `~seiya.cube.manga_rss_to_cube`.
+- :feature:`-` Initial structure.
