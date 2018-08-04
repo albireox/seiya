@@ -5,7 +5,8 @@
 
 :tocdepth: 2
 
-.. rubric:: :header_no_toc:`Welcome to seiya's documentation!`
+Welcome to seiya's documentation!
+=================================
 
 This is the Sphinx documentation for the SDSS Python product seiya
 

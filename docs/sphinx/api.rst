@@ -2,14 +2,13 @@
 .. _api:
 
 seiya Reference
-=========================
+===============
 
-.. _api-main:
+.. _api-cube:
 
-Main
+Cube
 ----
 
-.. automodule:: seiya.main
-   :members:
-   :undoc-members:
+.. automodule:: seiya.cube
+   :members: cubify, manga_rss_to_cube
    :show-inheritance:
