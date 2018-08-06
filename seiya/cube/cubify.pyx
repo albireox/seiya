@@ -47,6 +47,15 @@ def cubify(DTYPE_t [:, :] flux, DTYPE_t [:, :] ivar, DTYPE_t [:, :] xpos, DTYPE_
     first element in the grid is always :math:`-cube\_shape \times pixel\_size`
     and the last one :math:`(cube\_shape - 1) \times pixel\_size`.
 
+    If the input ``flux`` and ``ivar`` to this function originate from a MaNGA
+    RSS file (e.g., via the `~seiya.cube.manga_rss_to_cube` function), the
+    output datacube will be almost identical to the MaNGA DRP 3D cubes. The
+    small disparities are due to the DRP slightly different handling of masked
+    RSS values. In average, 99.5% of the values in the produced cube are
+    identical to the ones produced by the DRP within a relative tolerance of
+    :math:`10^{-5}`. Only :math:`0.004\%` of the values differ by more than
+    :math:`10^{-3}` (relative).
+
     This version assumes that all the inputs and outputs are 32-bit float.
 
     Parameters
