@@ -39,6 +39,7 @@ Sphinx = "^2.2.1"
 flake8 = "^3.7.9"
 ipython = "^7.9.0"
 releases = { git = "https://github.com/albireox/releases.git", branch = "sphinx-version" }
+matplotlib = "^3.1.1"
 
 [tool.poetry.extras]
 docs = ["Sphinx", "releases"]
