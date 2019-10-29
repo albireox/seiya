@@ -47,12 +47,9 @@ templates_path = ['_templates']
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
-source_suffix = ['.rst', '.md']
-# source_suffix = '.rst'
+source_suffix = '.rst'
 
-source_parsers = {
-    '.md': 'recommonmark.parser.CommonMarkParser',
-}
+source_parsers = {}
 
 # The master toctree document.
 master_doc = 'index'
@@ -122,7 +119,7 @@ napoleon_use_rtype = False
 napoleon_use_ivar = True
 
 releases_github_path = 'albireox/seiya'
-releases_document_name = 'CHANGELOG.rst'
+releases_document_name = ['CHANGELOG.rst']
 
 rst_epilog = """
 .. |numpy_array| replace:: Numpy array
