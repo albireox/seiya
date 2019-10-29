@@ -1,2 +1,3 @@
 
-from .logger import log
+from .configuration import *
+from .logger import *

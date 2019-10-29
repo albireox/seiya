@@ -1,8 +1,0 @@
-[run]
-branch = true
-
-[report]
-omit =
-    python/seiya/etc/*
-    python/seiya/utils/*
-    python/seiya/tests/*

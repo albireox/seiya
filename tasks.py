@@ -20,33 +20,24 @@ from invoke import Collection, task
 # python package. If you do not have invoke, install it with pip install
 # To list the tasks available, type invoke --list from the top-level repo directory
 
-
-@task
-def buildext(ctx):
-    """Builds extensions in place"""
-
-    print('Running python setup.py build_ext --inplace')
-    ctx.run('python setup.py build_ext --inplace')
-
-
 @task
 def clean_docs(ctx):
     """Cleans up the docs"""
     print('Cleaning the docs')
-    ctx.run("rm -rf docs/sphinx/_build")
+    ctx.run('rm -rf docs/sphinx/_build')
 
 
-@task(buildext)
+@task
 def build_docs(ctx, clean=False):
     """Builds the Sphinx docs"""
 
     if clean:
         print('Cleaning the docs')
-        ctx.run("rm -rf docs/sphinx/_build")
+        ctx.run('rm -rf docs/sphinx/_build')
 
     print('Building the docs')
     os.chdir('docs/sphinx')
-    ctx.run("make html")
+    ctx.run('make html', pty=True)
 
 
 @task
@@ -58,7 +49,7 @@ def show_docs(ctx):
 
 
 @task
-def clean(ctx, full=False):
+def clean(ctx):
     """Cleans up the crap before a Pip build"""
 
     print('Cleaning')
@@ -66,25 +57,29 @@ def clean(ctx, full=False):
     ctx.run('rm -rf build')
     ctx.run('rm -rf dist')
     ctx.run('rm -rf *.egg-info')
+    ctx.run('rm -rf python/*.egg-info')
 
-    if full:
-        ctx.run('rm -rf seiya/**/*.so')
-        ctx.run('rm -rf seiya/**/*.c')
-        ctx.run('rm -rf seiya/cube/*.html')
+
+@task(clean, default=True)
+def deploy(ctx):
+    """Deploy the project to PyPI"""
+    print('Deploying to PyPI!')
+    ctx.run('python setup.py sdist bdist_wheel --universal')
+    ctx.run('twine upload dist/*')
 
 
 @task(clean)
-def deploy(ctx):
-    """Deploy the project to pypi"""
-    print('Deploying to Pypi!')
+def deploy_test(ctx):
+    """Deploy the project to the test version of  PyPI"""
+    print('Deploying to Test PyPI!')
     ctx.run('python setup.py sdist bdist_wheel --universal')
-    ctx.run('twine upload dist/*')
+    ctx.run('twine upload --repository-url https://test.pypi.org/legacy/ dist/*')
 
 
 os.chdir(os.path.dirname(__file__))
 
 # create a collection of tasks
-ns = Collection(clean, deploy, buildext)
+ns = Collection(clean)
 
 # create a sub-collection for the doc tasks
 docs = Collection('docs')
@@ -92,3 +87,8 @@ docs.add_task(build_docs, 'build')
 docs.add_task(clean_docs, 'clean')
 docs.add_task(show_docs, 'show')
 ns.add_collection(docs)
+
+deploy_task = Collection('deploy')
+deploy_task.add_task(deploy, 'pypi')
+deploy_task.add_task(deploy_test, 'test')
+ns.add_collection(deploy_task)
