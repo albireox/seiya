@@ -6,8 +6,8 @@
 # @Filename: cube.py
 # @License: BSD 3-clause (http://www.opensource.org/licenses/BSD-3-Clause)
 #
-# @Last modified by: José Sánchez-Gallego (gallegoj@uw.edu)
-# @Last modified time: 2018-08-03 17:43:27
+# @Last modified by: José Sánchez-Gallego
+# @Last modified time: 2019-10-29 00:49:52
 
 
 import sys
@@ -15,7 +15,6 @@ import sys
 import astropy
 
 from seiya import log
-from seiya.core.exceptions import SeiyaUserWarning
 from seiya.cube.cubify import cubify
 
 
@@ -48,7 +47,7 @@ def manga_rss_to_cube(rss):
     if ((sys.byteorder == 'little' and flux.dtype.byteorder == '>') or
             (sys.byteorder == 'big' and flux.dtype.byteorder == '<')):
 
-        log.warning('changing endianness for input data.', SeiyaUserWarning)
+        log.warning('changing endianness for input data.', UserWarning)
 
         flux = flux.byteswap().newbyteorder()
         ivar = ivar.byteswap().newbyteorder()

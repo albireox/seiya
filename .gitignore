@@ -101,3 +101,6 @@ ENV/
 # mypy
 .mypy_cache/
 
+# In-place Cython files
+seiya/cube/*.html
+seiya/cube/*.so
