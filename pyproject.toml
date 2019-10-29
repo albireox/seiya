@@ -35,16 +35,13 @@ pygments = "^2.2.0"
 astropy = "^3.2.1"
 
 [tool.poetry.dev-dependencies]
-Sphinx = "^2.2.1"
-flake8 = "^3.7.9"
 ipython = "^7.9.0"
-releases = { git = "https://github.com/albireox/releases.git", branch = "sphinx-version" }
 matplotlib = "^3.1.1"
 invoke = "^1.3.0"
+Sphinx = {version = "^2.2.1", extras = ["docs"]}
+flake8 = {version = "^3.7.9", extras = ["docs"]}
 sphinx_readable_theme = {version = "^1.3.0", extras = ["docs"]}
-
-[tool.poetry.extras]
-docs = ["Sphinx", "releases"]
+releases = {git = "https://github.com/albireox/releases.git", branch = "sphinx-version", extras=["docs"]}
 
 [tool.isort]
 line_length = 99
