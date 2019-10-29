@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "poetry.masonry.api"
-requires = ["poetry>=0.12", "setuptools", "wheel", "numpy>=1.17.3", "cython>=0.29.13"]
+requires = ["poetry>=1.0.0b3", "setuptools", "wheel", "numpy>=1.17.3", "cython>=0.29.13"]
 
 [tool.poetry]
 name = "seiya"
@@ -24,7 +24,6 @@ classifiers = [
 packages = [
     { include = "seiya" }
 ]
-build = "build.py"
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -43,6 +42,7 @@ flake8 = "^3.7.9"
 sphinx_readable_theme = "^1.3.0"
 releases = {git = "https://github.com/albireox/releases.git", branch = "sphinx-version"}
 doc8 = "^0.8.0"
+toml = "^0.10.0"
 
 [tool.poetry.extras]
 docs = ["Sphinx", "sphinx_readable_theme", "releases"]
