@@ -103,6 +103,21 @@ python-versions = ">=2.6, !=3.0.*, !=3.1.*"
 version = "4.4.1"
 
 [[package]]
+category = "dev"
+description = "Style checker for Sphinx (or other) RST documentation"
+name = "doc8"
+optional = false
+python-versions = "*"
+version = "0.8.0"
+
+[package.dependencies]
+chardet = "*"
+docutils = "*"
+restructuredtext-lint = ">=0.7"
+six = "*"
+stevedore = "*"
+
+[[package]]
 category = "main"
 description = "Docutils -- Python Documentation Utilities"
 name = "docutils"
@@ -299,6 +314,14 @@ testing = ["docopt", "pytest (>=3.0.7)"]
 
 [[package]]
 category = "dev"
+description = "Python Build Reasonableness"
+name = "pbr"
+optional = false
+python-versions = "*"
+version = "5.4.3"
+
+[[package]]
+category = "dev"
 description = "Pexpect allows easy control of interactive console applications."
 marker = "sys_platform != \"win32\""
 name = "pexpect"
@@ -413,6 +436,7 @@ sphinx = ">=1.3"
 reference = "fa7fc58a5b7fce0af7a3fbc8624503ad94c8b935"
 type = "git"
 url = "https://github.com/albireox/releases.git"
+
 [[package]]
 category = "main"
 description = "Python HTTP for Humans."
@@ -430,6 +454,17 @@ urllib3 = ">=1.21.1,<1.25.0 || >1.25.0,<1.25.1 || >1.25.1,<1.26"
 [package.extras]
 security = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)"]
 socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7)", "win-inet-pton"]
+
+[[package]]
+category = "dev"
+description = "reStructuredText linter"
+name = "restructuredtext-lint"
+optional = false
+python-versions = "*"
+version = "1.3.0"
+
+[package.dependencies]
+docutils = ">=0.11,<1.0"
 
 [[package]]
 category = "main"
@@ -578,6 +613,18 @@ test = ["pytest", "mock"]
 
 [[package]]
 category = "dev"
+description = "Manage dynamic plugins for Python applications"
+name = "stevedore"
+optional = false
+python-versions = "*"
+version = "1.31.0"
+
+[package.dependencies]
+pbr = ">=2.0.0,<2.1.0 || >2.1.0"
+six = ">=1.10.0"
+
+[[package]]
+category = "dev"
 description = "Traitlets Python config system"
 name = "traitlets"
 optional = false
@@ -614,8 +661,8 @@ python-versions = "*"
 version = "0.1.7"
 
 [metadata]
-content-hash = "0c399f3e46d0d6ec9277d00b6dfb38ac4ddef445a8cce4a292e2f73077a7010e"
-python-versions = "^3.8"
+content-hash = "c3060618ba801b8c8ecb14cfbf39a4afc16e4a0dea64e715ccad8079b83646f8"
+python-versions = "^3.7"
 
 [metadata.files]
 alabaster = [
@@ -701,6 +748,10 @@ cython = [
 decorator = [
     {file = "decorator-4.4.1-py2.py3-none-any.whl", hash = "sha256:5d19b92a3c8f7f101c8dd86afd86b0f061a8ce4540ab8cd401fa2542756bce6d"},
     {file = "decorator-4.4.1.tar.gz", hash = "sha256:54c38050039232e1db4ad7375cfce6748d7b41c29e95a081c8a6d2c30364a2ce"},
+]
+doc8 = [
+    {file = "doc8-0.8.0-py2.py3-none-any.whl", hash = "sha256:d12f08aa77a4a65eb28752f4bc78f41f611f9412c4155e2b03f1f5d4a45efe04"},
+    {file = "doc8-0.8.0.tar.gz", hash = "sha256:2df89f9c1a5abfb98ab55d0175fed633cae0cf45025b8b1e0ee5ea772be28543"},
 ]
 docutils = [
     {file = "docutils-0.15.2-py2-none-any.whl", hash = "sha256:9e4d7ecfc600058e07ba661411a2b7de2fd0fafa17d1a7f7361cd47b1175c827"},
@@ -850,6 +901,10 @@ parso = [
     {file = "parso-0.5.1-py2.py3-none-any.whl", hash = "sha256:63854233e1fadb5da97f2744b6b24346d2750b85965e7e399bec1620232797dc"},
     {file = "parso-0.5.1.tar.gz", hash = "sha256:666b0ee4a7a1220f65d367617f2cd3ffddff3e205f3f16a0284df30e774c2a9c"},
 ]
+pbr = [
+    {file = "pbr-5.4.3-py2.py3-none-any.whl", hash = "sha256:b32c8ccaac7b1a20c0ce00ce317642e6cf231cf038f9875e0280e28af5bf7ac9"},
+    {file = "pbr-5.4.3.tar.gz", hash = "sha256:2c8e420cd4ed4cec4e7999ee47409e876af575d4c35a45840d59e8b5f3155ab8"},
+]
 pexpect = [
     {file = "pexpect-4.7.0-py2.py3-none-any.whl", hash = "sha256:2094eefdfcf37a1fdbfb9aa090862c1a4878e5c7e0e7e7088bdb511c558e5cd1"},
     {file = "pexpect-4.7.0.tar.gz", hash = "sha256:9e2c1fd0e6ee3a49b28f95d4b33bc389c89b20af6a1255906e90ff1262ce62eb"},
@@ -911,6 +966,9 @@ requests = [
     {file = "requests-2.22.0-py2.py3-none-any.whl", hash = "sha256:9cf5292fcd0f598c671cfc1e0d7d1a7f13bb8085e9a590f48c010551dc6c4b31"},
     {file = "requests-2.22.0.tar.gz", hash = "sha256:11e007a8a2aa0323f5a921e9e6a2d7e4e67d9877e85773fba9ba6419025cbeb4"},
 ]
+restructuredtext-lint = [
+    {file = "restructuredtext_lint-1.3.0.tar.gz", hash = "sha256:97b3da356d5b3a8514d8f1f9098febd8b41463bed6a1d9f126cf0a048b6fd908"},
+]
 semantic-version = [
     {file = "semantic_version-2.8.2-py2.py3-none-any.whl", hash = "sha256:695d5a06a86439d2dd0e5eaf3e46c5e6090bb5e72ba88377680a0acb483a3b44"},
     {file = "semantic_version-2.8.2.tar.gz", hash = "sha256:71c716e99086c44d068262b86e4775aa6db7fabee0743e4e33b00fbf6f672585"},
@@ -957,6 +1015,10 @@ sphinxcontrib-serializinghtml = [
 sphinxcontrib-websupport = [
     {file = "sphinxcontrib-websupport-1.1.2.tar.gz", hash = "sha256:1501befb0fdf1d1c29a800fdbf4ef5dc5369377300ddbdd16d2cd40e54c6eefc"},
     {file = "sphinxcontrib_websupport-1.1.2-py2.py3-none-any.whl", hash = "sha256:e02f717baf02d0b6c3dd62cf81232ffca4c9d5c331e03766982e3ff9f1d2bc3f"},
+]
+stevedore = [
+    {file = "stevedore-1.31.0-py2.py3-none-any.whl", hash = "sha256:01d9f4beecf0fbd070ddb18e5efb10567801ba7ef3ddab0074f54e3cd4e91730"},
+    {file = "stevedore-1.31.0.tar.gz", hash = "sha256:e0739f9739a681c7a1fda76a102b65295e96a144ccdb552f2ae03c5f0abe8a14"},
 ]
 traitlets = [
     {file = "traitlets-4.3.3-py2.py3-none-any.whl", hash = "sha256:70b4c6a1d9019d7b4f6846832288f86998aa3b9207c6821f3578a6a6a467fe44"},
